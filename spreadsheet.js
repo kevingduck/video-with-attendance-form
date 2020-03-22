@@ -13,7 +13,7 @@ const TOKEN_PATH = 'token.json';
 fs.readFile('credentials.json', (err, content) => {
   if (err) return console.log('Error loading client secret file:', err);
   // Authorize a client with credentials, then call the Google Sheets API.
-  authorize(JSON.parse(content), listMajors);
+  authorize(JSON.parse(content), getActivities);
 });
 
 /**
@@ -88,5 +88,40 @@ function listMajors(auth) {
     } else {
       console.log('No data found.');
     }
+  });
+}
+
+function getActivities(auth) {
+  var activities = [];
+
+  const sheets = google.sheets({version: 'v4', auth});
+  sheets.spreadsheets.values.get({
+    spreadsheetId: '1uWurJW03FnXFvB4yLgKp9PIQytq5cCclCPHrQVZkGjw',
+    range: 'Activities!A2:E',
+  }, (err, res) => {
+    if (err) return console.log('The API returned an error: ' + err);
+    const rows = res.data.values;
+    if (rows.length) {
+      // Print columns A and E, which correspond to indices 0 and 4.
+      rows.map((row) => {
+        title = row[0];
+        time = row[1];
+        category = row[2];
+        age = row[3];
+        notes = row[4];
+        
+        activities.push({
+          key: title,
+          time: time,
+          category: category,
+          age:age,
+          notes:notes
+        })
+      });
+    } else {
+      console.log('No data found.');
+    }
+    console.log(activities)
+    return activities;
   });
 }
