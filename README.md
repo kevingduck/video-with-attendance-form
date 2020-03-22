@@ -1,0 +1,1 @@
+This script uses the Google Spreadsheets API to retrieve data from a Google Spreadsheet.
