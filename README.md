@@ -10,3 +10,4 @@ credentials.json file from Google Developer Console is required (check inbox) bu
 6. Generate and add credentials.json file from GDC to project root
 7. node spreadsheet.js
 
+https://developers.google.com/sheets/api/quickstart/nodejs
