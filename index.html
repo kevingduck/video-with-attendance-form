@@ -6,15 +6,18 @@
     <!-- <script src='spreadsheet.js'></script> -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script>
+        function showData(data){
+            activities = data.feed.entry;
+            for (i=0; i<activities.length; i++) {
+                console.log(activities[i].content.$t);
+            }
+        }
         function getData() {
             fetch('https://spreadsheets.google.com/feeds/cells/1uWurJW03FnXFvB4yLgKp9PIQytq5cCclCPHrQVZkGjw/1/public/full?alt=json')
             .then(response => response.json())
             .then((jsonData) => {
-                var result = JSON.parse(jsonData);
-                console.log(result);
-                return result;
-                // jsonData is parsed json object received from url
-                // console.log(jsonData)
+                showData(jsonData);
+                return jsonData;
             })
             .catch((error) => {
                 // handle your errors here
@@ -22,12 +25,13 @@
             })
         }
 
-        
+
     </script>
     <title>Activities</title>
 </head>
 <body onload="getData()">
-    <h1>Activities for Kids</h1>
+    <h1>Title</h1>
+    <ul id="ct"></ul>
     
 </body>
 </html>
