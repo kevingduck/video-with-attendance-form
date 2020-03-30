@@ -8,10 +8,22 @@
     <script>
         function showData(data){
             activities = data.feed.entry;
+            var list = document.getElementById('activitiesList');
+            
             for (i=0; i<activities.length; i++) {
-                console.log(activities[i].content.$t);
+                // console.log(activities[i].content.$t);
+            }
+
+            for (var i = 5; i < activities.length; i++) {
+                
+                var li = document.createElement('li');
+                var item = activities[i].content.$t;
+                
+                li.innerHTML = item;
+                list.appendChild(li);
             }
         }
+
         function getData() {
             fetch('https://spreadsheets.google.com/feeds/cells/1uWurJW03FnXFvB4yLgKp9PIQytq5cCclCPHrQVZkGjw/1/public/full?alt=json')
             .then(response => response.json())
@@ -24,14 +36,19 @@
                 console.error(error)
             })
         }
+        function onload() {
+            console.log("loaded page");
+        }
 
 
     </script>
     <title>Activities</title>
 </head>
 <body onload="getData()">
-    <h1>Title</h1>
-    <ul id="ct"></ul>
-    
+    <div id="activitiesList">
+    <pre id='json'></pre>
+        <h1>Title</h1>
+        <ul id="ct"></ul>
+    </div>
 </body>
 </html>
