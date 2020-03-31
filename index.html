@@ -5,49 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- <script src='spreadsheet.js'></script> -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script>
-        function showData(data){
-            activities = data.feed.entry;
-            var list = document.getElementById('activitiesList');
-            
-            for (i=0; i<activities.length; i++) {
-                // console.log(activities[i].content.$t);
-            }
-
-            for (var i = 5; i < activities.length; i++) {
-                
-                var li = document.createElement('li');
-                var item = activities[i].content.$t;
-                
-                li.innerHTML = item;
-                list.appendChild(li);
-            }
-        }
-
-        function getData() {
-            fetch('https://spreadsheets.google.com/feeds/cells/1uWurJW03FnXFvB4yLgKp9PIQytq5cCclCPHrQVZkGjw/1/public/full?alt=json')
-            .then(response => response.json())
-            .then((jsonData) => {
-                showData(jsonData);
-                return jsonData;
-            })
-            .catch((error) => {
-                // handle your errors here
-                console.error(error)
-            })
-        }
-        function onload() {
-            console.log("loaded page");
-        }
-
-
-    </script>
+    <script src="script.js"></script>
     <title>Activities</title>
 </head>
 <body onload="getData()">
     <div id="activitiesList">
     <pre id='json'></pre>
         <h1>Title</h1>
+        <div>
+            <table id="table">
+            </table>
+        </div>
         <ul id="ct"></ul>
     </div>
 </body>
