@@ -29,8 +29,17 @@
       }, // getAjax
 
       cleanItUp: function(data) {
+        var cleaned_data = []
         var self = this;
         var cells = data.feed.entry;
+        for (var i=0; i<cells.length; i++) {
+          var s = cells[i].content.$t;
+          s = s.split(", ");
+          // TODO: create dict from cell data and push to cleaned_data
+          cleaned_data.push(s);
+        }
+        // console.log(cleaned_data);
+
         _.map(cells, function(cell) {
           var rowObj = {};
           var rowCols = _.words(cell.content.$t,/[^,]+/g);
