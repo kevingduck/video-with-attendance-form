@@ -1,52 +1,51 @@
-function showData(data){
-    activities = data.feed.entry;
-    var headers = makeHeaders(cols=5);
-    populateTable();
-}
+(function() {
 
-function makeHeaders(cols) {
-    var table = document.getElementById('table');
-    var row = document.createElement('tr');
+  'use strict';
 
-    for (var i = 0; i < cols; i++) {
-        var header = document.createElement('th');
-        var item = activities[i].content.$t;
-        header.innerHTML = item;
-        row.appendChild(header);
-        table.appendChild(row);
+  Vue.component('demo-grid', {
+    template: '<table><tr v-for="station in data"><td v-for="info in station">{{info}}</td></tr></table>',
+    props: {
+      data: Array,
     }
-}
+  });
 
-function populateTable() {
-    var table = document.getElementById('table');
+  var app = new Vue({
+    el: '#app',
+    data: {
+      ranking_ken_1: []
+    },
+    created: function() {
+      console.log('created');
+      this.getAjax();
+    },
+    methods: {
 
-    for (var i = 5; i < activities.length; i++) {
-        if (i % 5 != 0) {
-            console.log(i);
-            var row = document.createElement('tr');
-            var row_data = document.createElement('td');
-            var item = activities[i].content.$t;
-            row_data.innerHTML = item;
-            table.appendChild(row);
-            row.appendChild(row_data);
-        }
+      getAjax: function() {
+        var self = this;
+        var JSONURL = 'https://spreadsheets.google.com/feeds/list/1NtKkw71fJD7ru1hS6DkPWwviK6wQHtO7YlsBZC27OHQ/1/public/basic?alt=json';
+        $.get(JSONURL, function(spreadData){
+          self.cleanItUp(spreadData);
+      	});
+      }, // getAjax
+
+      cleanItUp: function(data) {
+        var self = this;
+        var cells = data.feed.entry;
+        _.map(cells, function(cell) {
+          var rowObj = {};
+          var rowCols = _.words(cell.content.$t,/[^,]+/g);
+          _.map(rowCols, function(col) {
+            var keyVal = _.words(col,/[^:]+/g);
+            rowObj[keyVal[0]] = keyVal[1];
+          });
+          rowObj.nid = cell.title.$t;
+          self.ranking_ken_1.push(rowObj);
+          
+        });
+      }
+
     }
-}
 
-function getData() {
-    fetch('https://spreadsheets.google.com/feeds/cells/1uWurJW03FnXFvB4yLgKp9PIQytq5cCclCPHrQVZkGjw/1/public/full?alt=json')
-    .then(response => response.json())
-    .then((jsonData) => {
-        showData(jsonData);
-        return jsonData;
-    })
-    .catch((error) => {
-        // handle your errors here
-        console.error(error)
-    })
-}
-function onload() {
-    console.log("loaded page");
-}
+  });
 
-
+})();
