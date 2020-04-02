@@ -12,7 +12,7 @@
   var app = new Vue({
     el: '#app',
     data: {
-      ranking_ken_1: []
+      activities: []
     },
     created: function() {
       console.log('created');
@@ -39,7 +39,7 @@
             rowObj[keyVal[0]] = keyVal[1];
           });
           rowObj.nid = cell.title.$t;
-          self.ranking_ken_1.push(rowObj);
+          self.activities.push(rowObj);
           
         });
       }
