@@ -33,12 +33,24 @@
         var self = this;
         var cells = data.feed.entry;
         for (var i=0; i<cells.length; i++) {
-          var s = cells[i].content.$t;
-          s = s.split(", ");
-          // TODO: create dict from cell data and push to cleaned_data
-          cleaned_data.push(s);
+          var s = cells[i].content.$t.split(", ");
+          var key = i;
+          var activity = s[0].split(": ")[1];
+          var time = s[1].split(": ")[1];
+          var category = s[2].split(": ")[1];
+          var age = s[3].split(": ")[1];
+          var notes = s[4].split(": ")[1];
+          
+          cleaned_data.push({
+            key: key,
+            activity: activity,
+            time: time,
+            category: category,
+            age: age,
+            notes: notes
+          });
         }
-        // console.log(cleaned_data);
+        console.log(cleaned_data);
 
         _.map(cells, function(cell) {
           var rowObj = {};
@@ -49,7 +61,8 @@
           });
           rowObj.nid = cell.title.$t;
           self.activities.push(rowObj);
-          
+          debugger;
+
         });
       }
 
