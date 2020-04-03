@@ -4,15 +4,17 @@
   <meta charset="UTF-8">
   <title>Activities for Kids</title>
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
 
 </head>
 <body>
 
-  <div id="app">
+  <div id="app" class="container">
   <h1>Activities!</h1>
   <h3>Reload this page to make a list of 10 activities you can do with your kids.</h3>
-  <table>
-      <thead>
+  <table class="table table-striped table-bordered table-hover">
+      <thead class="thead-dark">
         <tr>
           <th>Acvivity</th>
           <th>Time</th>
@@ -22,7 +24,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr v-for="activity in randomized">
+        <tr v-for="(key, activity) in randomized">
           <td>{{ activity.activity }}</td>
           <td>{{ activity.time }}</td>
           <td>{{ activity.category }}</td>
@@ -42,7 +44,7 @@
   <script src="script.js"></script>
 
 </body>
-<style>
+<!-- <style>
 * {
   margin:10px;
   padding:0px 10px;
@@ -72,5 +74,5 @@ thead th:nth-child(4) {
 
 th, td {
   padding: 15px;
-}</style>
+}</style> -->
 </html>
