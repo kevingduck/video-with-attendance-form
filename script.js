@@ -12,14 +12,13 @@
   var app = new Vue({
     el: '#app',
     data: {
-      activities: []
+      cleanedData: []
     },
     created: function() {
       console.log('created');
       this.getAjax();
     },
     methods: {
-
       getAjax: function() {
         var self = this;
         var JSONURL = 'https://spreadsheets.google.com/feeds/list/1NtKkw71fJD7ru1hS6DkPWwviK6wQHtO7YlsBZC27OHQ/1/public/basic?alt=json';
@@ -29,7 +28,7 @@
       }, // getAjax
 
       cleanItUp: function(data) {
-        var cleaned_data = []
+        var cleanedData = []
         var self = this;
         var cells = data.feed.entry;
         for (var i=0; i<cells.length; i++) {
@@ -41,7 +40,7 @@
           var age = s[3].split(": ")[1];
           var notes = s[4].split(": ")[1];
           
-          cleaned_data.push({
+          cleanedData.push({
             key: key,
             activity: activity,
             time: time,
@@ -50,8 +49,16 @@
             notes: notes
           });
         }
-        console.log(cleaned_data);
+        // console.log(cleanedData);
+        var num_activities = 10;
+        var random_activities = [];
+        for (var i=0; i<num_activities; i++) {
+          var item = cleanedData[Math.floor(Math.random() * cleanedData.length)];
+          random_activities.push(item);
+        }
 
+        debugger;
+        
         _.map(cells, function(cell) {
           var rowObj = {};
           var rowCols = _.words(cell.content.$t,/[^,]+/g);
@@ -60,9 +67,7 @@
             rowObj[keyVal[0]] = keyVal[1];
           });
           rowObj.nid = cell.title.$t;
-          self.activities.push(rowObj);
-          debugger;
-
+          self.cleanedData.push(rowObj);
         });
       }
 
