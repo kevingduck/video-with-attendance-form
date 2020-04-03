@@ -12,10 +12,10 @@
   var app = new Vue({
     el: '#app',
     data: {
-      cleanedData: []
+      cleanedData: [],
+      randomized: []
     },
     created: function() {
-      console.log('created');
       this.getAjax();
     },
     methods: {
@@ -28,9 +28,10 @@
       }, // getAjax
 
       cleanItUp: function(data) {
-        var cleanedData = []
+        var cleanedData = [];
         var self = this;
         var cells = data.feed.entry;
+        // Split by spreadsheet col to make clean objects
         for (var i=0; i<cells.length; i++) {
           var s = cells[i].content.$t.split(", ");
           var key = i;
@@ -40,7 +41,7 @@
           var age = s[3].split(": ")[1];
           var notes = s[4].split(": ")[1];
           
-          cleanedData.push({
+          self.cleanedData.push({
             key: key,
             activity: activity,
             time: time,
@@ -49,30 +50,16 @@
             notes: notes
           });
         }
-        // console.log(cleanedData);
-        var num_activities = 10;
-        var random_activities = [];
-        for (var i=0; i<num_activities; i++) {
-          var item = cleanedData[Math.floor(Math.random() * cleanedData.length)];
-          random_activities.push(item);
-        }
+        // Randomize
+        var num_activities = 10; // Set number of activities
+        var randomized = [];
 
-        debugger;
-        
-        _.map(cells, function(cell) {
-          var rowObj = {};
-          var rowCols = _.words(cell.content.$t,/[^,]+/g);
-          _.map(rowCols, function(col) {
-            var keyVal = _.words(col,/[^:]+/g);
-            rowObj[keyVal[0]] = keyVal[1];
-          });
-          rowObj.nid = cell.title.$t;
-          self.cleanedData.push(rowObj);
-        });
-      }
+        for (var i=0; i<num_activities; i++) {
+          var randomItem = self.cleanedData[Math.floor(Math.random()*self.cleanedData.length)];
+          self.randomized.push(randomItem);
+        }
+      },
 
     }
-
   });
-
 })();

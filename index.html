@@ -9,11 +9,28 @@
 <body>
 
   <div id="app">
-  <h1>Activities</h1>
-  
-  <demo-grid :data="cleanedData">
-    
-  </demo-grid>
+  <h1>Activities!</h1>
+  <h3>Reload this page to make a list of 10 activities you can do with your kids.</h3>
+  <table>
+      <thead>
+        <tr>
+          <th>Acvivity</th>
+          <th>Time</th>
+          <th>Category</th>
+          <th>Age</th>
+          <th>Notes</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr v-for="activity in randomized">
+          <td>{{ activity.activity }}</td>
+          <td>{{ activity.time }}</td>
+          <td>{{ activity.category }}</td>
+          <td>{{ activity.age }}</td>
+          <td>{{ activity.notes }}</td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
@@ -26,13 +43,15 @@
 
 </body>
 <style>
-/* spacing */
+* {
+  margin:10px;
+  padding:0px 10px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+}
+
 
 table {
   table-layout: fixed;
-  width: 100%;
-  border-collapse: collapse;
-  border: 3px solid purple;
 }
 
 thead th:nth-child(1) {
@@ -52,6 +71,6 @@ thead th:nth-child(4) {
 }
 
 th, td {
-  padding: 20px;
+  padding: 15px;
 }</style>
 </html>
