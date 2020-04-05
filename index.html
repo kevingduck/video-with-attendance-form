@@ -1,36 +1,43 @@
 <!DOCTYPE html>
 <html>
+
 <head lang="ja">
   <meta charset="UTF-8">
   <title>Activities for Kids</title>
   <!-- <link rel="stylesheet" href="style.css"> -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
 </head>
+
 <body>
   <div id="app" class="container">
-  <h1>Activities!</h1>
-  <span>Reload this page to make a list of 10 activities you can do with your kids.</h4>
-  <table class="table table-striped table-bordered table-hover">
-      <thead class="thead-dark">
-        <tr>
-          <th>Acvivity</th>
-          <th>Time</th>
-          <th>Category</th>
-          <th>Age</th>
-          <th>Notes</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr v-for="(key, activity) in randomized">
-          <td>{{ activity.activity }}</td>
-          <td>{{ activity.time }}</td>
-          <td>{{ activity.category }}</td>
-          <td>{{ activity.age }}</td>
-          <td>{{ activity.notes }}</td>
-        </tr>
-      </tbody>
-    </table>
+    <div class="jumbotron text-center">
+      <h1>Activities!</h1>
+      <h4>Refresh this page to make a list of 10 activities you can do with your kids.</h4>
+        <div class="table-responsive">
+          <table class="table table-striped table-bordered table-hover">
+            <thead class="thead-dark">
+              <tr>
+                <th>Activity</th>
+                <th>Time</th>
+                <th>Category</th>
+                <th>Age</th>
+                <th>Notes</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr v-for="(key, activity) in randomized">
+                <td>{{ activity.activity }}</td>
+                <td>{{ activity.time }}</td>
+                <td>{{ activity.category }}</td>
+                <td>{{ activity.age }}</td>
+                <td>{{ activity.notes }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+    </div>
   </div>
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
@@ -73,4 +80,5 @@ thead th:nth-child(4) {
 th, td {
   padding: 15px;
 }</style> -->
+
 </html>
