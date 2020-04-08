@@ -13,12 +13,15 @@
 <body>
   <div id="app" class="container">
     <div class="jumbotron text-center">
+      <h1>Kids Activities</h1>
       <button type="button" class="btn btn-block btn-lg btn-primary mb-3" onClick="window.location.reload();">Get
         Activities!</button>
+        <hr class="my-4">
+
       <div v-for="(key, activity) in randomized" class="card">
         <div class="card-body">
-          <h5 class="card-title">{{ activity.activity }}</h5>
-          <p class="card-text" v-if="activity.notes==='(none)'">Notes ...</p>
+          <h3 class="card-title">{{ activity.activity }}</h3>
+          <p class="card-text" v-if="activity.notes==='(none)'"></p>
           <p class="card-text" v-else>{{ activity.notes }}</p>
         </div>
         <ul class="list-group list-group-flush">
@@ -47,6 +50,10 @@
 
 .card {
   margin:10px 0px;
+}
+
+h1 {
+  margin:0px 0px 30px 0px;
 }
 
 </style>
