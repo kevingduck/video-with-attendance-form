@@ -13,29 +13,24 @@
 <body>
   <div id="app" class="container">
     <div class="jumbotron text-center">
-        <button type="button" class="btn btn-lg btn-primary mb-3" onClick="window.location.reload();">Get Activities!</button>
-        <div class="table-responsive">
-          <table class="table table-striped table-bordered table-hover">
-            <thead class="thead-dark">
-              <tr>
-                <th>Activity</th>
-                <th>Time</th>
-                <th>Category</th>
-                <th>Age</th>
-                <th>Notes</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr v-for="(key, activity) in randomized">
-                <td>{{ activity.activity }}</td>
-                <td>{{ activity.time }}</td>
-                <td>{{ activity.category }}</td>
-                <td>{{ activity.age }}</td>
-                <td>{{ activity.notes }}</td>
-              </tr>
-            </tbody>
-          </table>
+      <button type="button" class="btn btn-block btn-lg btn-primary mb-3" onClick="window.location.reload();">Get
+        Activities!</button>
+      <div v-for="(key, activity) in randomized" class="card">
+        <div class="card-body">
+          <h5 class="card-title">{{ activity.activity }}</h5>
+          <p class="card-text" v-if="activity.notes==='(none)'">Notes ...</p>
+          <p class="card-text" v-else>{{ activity.notes }}</p>
         </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">Category: {{ activity.category }} </li>
+          <li class="list-group-item">Minimum Age: {{ activity.age }}</li>
+          <li class="list-group-item">Time: {{ activity.time }} </li>
+        </ul>
+        <div class="card-body">
+          <a href="#" class="card-link">Add to Calendar</a>
+          <a href="#" class="card-link">Like</a>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -48,36 +43,12 @@
   <script src="script.js"></script>
 
 </body>
-<!-- <style>
-* {
-  margin:10px;
-  padding:0px 10px;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+<style>
+
+.card {
+  margin:10px 0px;
 }
 
-
-table {
-  table-layout: fixed;
-}
-
-thead th:nth-child(1) {
-  width: 30%;
-}
-
-thead th:nth-child(2) {
-  width: 20%;
-}
-
-thead th:nth-child(3) {
-  width: 15%;
-}
-
-thead th:nth-child(4) {
-  width: 35%;
-}
-
-th, td {
-  padding: 15px;
-}</style> -->
+</style>
 
 </html>
