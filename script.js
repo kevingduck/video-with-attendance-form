@@ -33,7 +33,7 @@
         var cells = data.feed.entry;
         // Split by spreadsheet col to make clean objects
         for (var i=0; i<cells.length; i++) {
-          var s = cells[i].content.$t.split(", ");
+          var s = cells[i].content.$t.split(",");
           var key = i;
           var activity = s[0].split(": ")[1];
           var time = s[1].split(": ")[1];

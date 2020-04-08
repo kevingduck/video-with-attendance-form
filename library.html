@@ -37,7 +37,8 @@
       <button type="button" class="btn btn-block btn-lg btn-primary mb-6" onClick="window.location.reload();">Get
         Activities!</button>
       <hr class="my-4">
-      <div v-for="(key, activity) in randomized" class="card">
+
+      <div v-once v-for="(key, activity) in cleanedData" class="card">
         <div class="card-body">
           <h3 class="card-title">{{ activity.activity }}</h3>
           <p class="card-text" v-if="activity.notes==='(none)'"></p>

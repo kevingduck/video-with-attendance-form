@@ -33,27 +33,56 @@
   <div id="app" class="container">
     <div class="jumbotron text-center">
       <h1>Kids Activities</h1>
-      <h5>A collection of ideas for spending the day with kids</h5>
-      <button type="button" class="btn btn-block btn-lg btn-primary mb-6" onClick="window.location.reload();">Get
-        Activities!</button>
-      <hr class="my-4">
-      <div v-for="(key, activity) in randomized" class="card">
-        <div class="card-body">
-          <h3 class="card-title">{{ activity.activity }}</h3>
-          <p class="card-text" v-if="activity.notes==='(none)'"></p>
-          <p class="card-text" v-else>{{ activity.notes }}</p>
+      <h5>Submit your idea and share it with the world!</h5>
+      <form name="activityForm" method="POST" data-netlify="true">
+        <div class="form-row">
+          <div class="form-group">
+            <label>Activity Name
+              <input name="inputActivity" type="text" class="form-control" id="inputActivity"
+                placeholder="Activity ...">
+            </label>
+          </div>
         </div>
-        <ul class="list-group list-group-flush">
-          <li class="list-group-item">Category: {{ activity.category }} </li>
-          <li class="list-group-item">Minimum Age: {{ activity.age }}</li>
-          <li class="list-group-item">Time: {{ activity.time }} </li>
-        </ul>
-        <div class="card-body">
-          <a href="#" class="card-link">Add to Calendar</a>
-          <a href="#" class="card-link">Like</a>
+        <div class="form-row">
+          <div class="form-group col-md-12">
+            <label>Amount of time required to do activity
+              <input type="text" name="inputTime" class="form-control" id="inputTime" placeholder="Time (minutes) ...">
+            </label>
+          </div>
         </div>
-      </div>
+        <div class="form-row">
+          <div class="form-group col-md-12">
+            <label>Category
+              <select name="category[]" id="inputCategory" class="form-control">
+                <option v-for="(key, activity) in randomized">{{ activity.category }}</option>
+              </select>
+            </label>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-12">
+            <label>Minimum Age
+              <input name="inputAge" type="text" class="form-control" id="inputAge" placeholder="Age ...">
+            </label>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Notes & Instructions
+              <textarea type="text" class="form-control" id="inputNotes"></textarea>
+            </label>
+          </div>
+        </div>
+        <div class="container">
+          <div class="row">
+            <div class="col text-center">
+              <button type="submit" class="btn btn-primary col-md-4">Submit</button>
+            </div>
+          </div>
+        </div>
     </div>
+    </form>
+  </div>
   </div>
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
@@ -72,6 +101,10 @@
 
   h1 {
     margin: 0px 0px 10px 0px;
+  }
+
+  form {
+    text-align: left;
   }
 </style>
 
