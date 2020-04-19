@@ -13,7 +13,8 @@
     el: '#app',
     data: {
       cleanedData: [],
-      randomized: []
+      randomized: [],
+      categorySet: []
     },
     created: function() {
       this.getAjax();
@@ -50,6 +51,9 @@
             notes: notes
           });
         }
+        // var categorySet = [...new Set(self.cleanedData)];
+        // console.log(categorySet);
+
         // Randomize
         var num_activities = 10; // Set number of activities
         var randomized = [];
