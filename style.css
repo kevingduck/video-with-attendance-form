@@ -72,3 +72,11 @@ h1 {
     transform:translateX(25%);
   }
 }
+
+.card {
+  margin:15px;
+}
+
+.card-title {
+  font-weight: bold;
+}
