@@ -4,12 +4,17 @@
 <head lang="ja">
   <meta charset="UTF-8">
   <title>Activities for Kids</title>
-  <!-- <link rel="stylesheet" href="style.css"> -->
+  <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
     integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 </head>
 
 <body>
+  <div class="bg"></div>
+  <div class="bg bg2"></div>
+  <div class="bg bg3"></div>
+  <div class="content">
+  </div>
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <a class="navbar-brand" href="#">Kids Activities</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
@@ -37,7 +42,7 @@
       <button type="button" class="btn btn-block btn-lg btn-primary mb-6" onClick="window.location.reload();">Get
         Activities!</button>
       <hr class="my-4">
-      <div v-for="(key, activity) in randomized" class="card">
+      <div v-for="(key, activity) in randomized" class="card text-left">
         <div class="card-body">
           <h3 class="card-title">{{ activity.activity }}</h3>
           <p class="card-text" v-if="activity.notes==='(none)'"></p>
@@ -46,12 +51,8 @@
         <ul class="list-group list-group-flush">
           <li class="list-group-item">Category: {{ activity.category }} </li>
           <li class="list-group-item">Minimum Age: {{ activity.age }}</li>
-          <li class="list-group-item">Time: {{ activity.time }} </li>
+          <li class="list-group-item">Time: {{ activity.time }} minutes</li>
         </ul>
-        <div class="card-body">
-          <a href="#" class="card-link">Add to Calendar</a>
-          <a href="#" class="card-link">Like</a>
-        </div>
       </div>
     </div>
   </div>
@@ -65,14 +66,5 @@
   <script src="script.js"></script>
 
 </body>
-<style>
-  .card {
-    margin: 10px 0px;
-  }
-
-  h1 {
-    margin: 0px 0px 10px 0px;
-  }
-</style>
 
 </html>
