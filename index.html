@@ -26,14 +26,16 @@
       <h1>Sign In</h1>
       <h5>Enter name to record attendance and to receive link to video.</h5>
       <div class="form text-left">
-        <form name="activityForm" method="POST" action="watch.html" data-netlify="true">
+        <form name="attendanceForm" method="POST" action="watch.html" data-netlify="true">
           <div class="form-row col-md-12">
-            <div class="form-group">
+            <div class="form-group col-md-12">
               <label>Name
-                <input name="inputName" type="text" class="form-control" id="inputName"
-                  placeholder="Name ...">
+                <input name="inputName" type="text" class="form-control" id="inputName" placeholder="Name ...">
               </label>
             </div>
+          </div>
+          <div class="col text-left">
+            <button type="submit" class="btn btn-primary">Watch Video</button>
           </div>
       </div>
     </div>
