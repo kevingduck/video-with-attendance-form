@@ -13,9 +13,8 @@ td {
   border-right: 1px solid #cdcdcd;
 }
 
-.form {
-  color:darkblue;
-  width:100vh;
+.form input {
+  width:50vh;
 }
 
 html {

@@ -33,15 +33,17 @@
     </button>
   </nav>
   <div id="app" class="container">
-    <div class="jumbotron text-center">
-      <h1>Sign In</h1>
-      <h5>Enter name to record attendance and to receive link to video.</h5>
-      <div class="form text-left">
+    <div class="jumbotron text-left">
+      <div class="ml-3">
+          <h1>Sign In</h1>
+          <h5>Enter name to record attendance and to receive link to video.</h5>
+      </div>
+      <div class="form text-left ">
         <form name="attendanceForm" method="POST" action="watch.html" data-netlify="true">
           <div class="form-row col-md-12">
             <div class="form-group col-md-12">
-              <label>Name
-                <input name="inputName" type="text" class="form-control" id="inputName" placeholder="Name ...">
+              <label>
+                <input name="inputName" type="text" class="form-control" id="inputName" placeholder="First and Last Name ...">
               </label>
             </div>
           </div>
