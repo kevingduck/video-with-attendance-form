@@ -1,1 +1,1 @@
-[DEMO](http://akifo.github.io/vue-spreadsheets/)
+Simple template for recording attendance via Netlify Forms and presenting an embedded video.
