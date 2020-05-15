@@ -7,17 +7,15 @@
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
     integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-  <!-- Global site tag (gtag.js) - Google Analytics -->
+    <!-- Global site tag (gtag.js) - Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=UA-110484704-7"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
-    function gtag() {
-      dataLayer.push(arguments);
-    }
+    function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
+
     gtag('config', 'UA-110484704-7');
   </script>
-
 </head>
 
 <body>
@@ -33,27 +31,9 @@
     </button>
   </nav>
   <div id="app" class="container">
-    <div class="jumbotron text-left">
-      <div class="ml-3">
-          <h1>Sign In</h1>
-          <h5>Enter name to record attendance and to receive link to video.</h5>
-      </div>
-      <div class="form text-left ">
-        <form name="attendanceForm" method="POST" action="watch.html" data-netlify="true">
-          <div class="form-row col-md-12">
-            <div class="form-group col-md-12">
-              <label>
-                <input name="inputName" type="text" class="form-control" id="inputName" placeholder="First and Last Name ..." required>
-              </label>
-            </div>
-          </div>
-          <div class="col text-left">
-            <button type="submit" class="btn btn-primary">Watch Video</button>
-          </div>
-      </div>
+    <div class="embed-responsive embed-responsive-16by9">
+      <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/FW6fJarWyEY"></iframe>
     </div>
-    </form>
-  </div>
   </div>
 
 
